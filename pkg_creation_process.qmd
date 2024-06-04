@@ -1,0 +1,57 @@
+---
+title: "Creation process"
+format: gfm 
+editor: visual
+---
+
+# Introduction
+
+This document describes the different packages and function calls used to create the a bare-bone template for complex shiny apps shipped as a R package.
+
+Complex shiny apps mean a combination of input requests and output results split in shiny modules. Structuring the app as a package helps organizing and documenting functions and ensure the app can run easily both online, when deployed, and locally with a simple package installation call.
+
+This bare-bone shiny app package template is [NOT]{.underline} a package itself as package creation is best in a project and Github repository of the same name. Instead it is a collection of R scripts that contain functions with Roxygen2 skeletons ready to use in a package. Functions coming from other packages are called with the package name, for example `package_name::function_name()`, unless the package or the functions are in the import section of the Roxygen2 skeleton, for example `#' @import package_name function_name.`
+
+The packages to be imported are called with `library()` in the examples but should be moved to the package DESCRIPTION file with `usethis::use_package()`.
+
+# Initiating the creation
+
+The shiny app is based on the following packages: `shiny`, `bslib`, `shinyjs`, `shinyWidgets`, plus `shiny.i18n` and `leaflet` optionally, for translating the whole app to several languages and including spatial data visualizations respectively.
+
+The analysis of data is mostly done with tidyverse packages: `dplyr`, `purrr`, `ggplot2`, `readr`, `readxl`, and for spatial data: `sf` and `terra`.
+
+The package related calls use the packages `devtools` and `usethis`.
+
+```{r}
+#| eval: false
+
+usethis::create_package("~/Github-repos/template.shinyapp.pkg", open = FALSE)
+```
+
+```{r}
+
+```
+
+```{}
+```
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
